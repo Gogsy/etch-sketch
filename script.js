@@ -1,32 +1,36 @@
 const container = document.getElementById('container');
 const resizeButton = document.getElementById('resizeButton');
 
-// funkcija za izradu grida...
 function createGrid(size) {
-   
     container.innerHTML = '';
-    
-    container.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
-    container.style.gridTemplateRows = `repeat(${size}, 1fr)`;
-
-    
     const totalDivs = size * size;
+    const containerWidth = container.offsetWidth;
+    const containerHeight = container.offsetHeight;
+    
+    let squareSize = Math.floor(Math.min(containerWidth / size, containerHeight / size));
+
+    container.style.gridTemplateColumns = `repeat(${size}, ${squareSize}px)`;
+    container.style.gridTemplateRows = `repeat(${size}, ${squareSize}px)`;
+
     for (let i = 0; i < totalDivs; i++) {
         const square = document.createElement('div');
         square.classList.add('square');
+
+        square.addEventListener('mouseover', () => {
+            square.style.backgroundColor = 'black';
+        });
+
         container.appendChild(square);
     }
 }
 
-// postavljanje grida
-createGrid(16);
-
-// event listen
 resizeButton.addEventListener('click', () => {
-    let newSize = parseInt(prompt('veličina mreže (1-100):'));
+    let newSize = parseInt(prompt('Grid (1-100):'));
     if (newSize >= 1 && newSize <= 100) {
         createGrid(newSize);
     } else {
-        alert('Molimo unesite broj između 1 i 100.');
+        alert('1 i 100.');
     }
 });
+
+createGrid(10);

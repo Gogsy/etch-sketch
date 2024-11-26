@@ -1,22 +1,39 @@
 body {
     font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    margin: 20px;
+    height: 100vh;
+    background-color: #f0f0f0;
+    flex-direction: row;
+    justify-content: space-evenly;
 }
-#container {
-    display: flex;
-    flex-wrap: wrap;
-    width: 500px;
-    height: 500px;
-    border: 1px solid #ccc;
+
+.controls {
+    margin-bottom: 20px;
 }
+
+#resizeButton {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+    gap: 0;
+    border: 3px solid black;
+    width: 600px;
+    height: 600px;
+}
+
 .square {
+    background-color: white;
+    border: 1px solid black;
     box-sizing: border-box;
-    border: 1px solid #ddd;
-    flex-grow: 1;
-}
-.square:hover {
-    background-color: #add8e6;
+    transition: background-color 0.3s;
 }
