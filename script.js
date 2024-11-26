@@ -13,7 +13,7 @@ function createGrid(size) {
         const square = document.createElement('div');
         square.classList.add('square');
         square.addEventListener('mouseover', () => {
-            square.style.backgroundColor = 'black';
+            square.style.backgroundColor = '#ff4500';
         });
         container.appendChild(square);
     }
