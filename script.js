@@ -3,23 +3,18 @@ const resizeButton = document.getElementById('resizeButton');
 
 function createGrid(size) {
     container.innerHTML = '';
-    const totalDivs = size * size;
-    const containerWidth = container.offsetWidth;
-    const containerHeight = container.offsetHeight;
-    
-    let squareSize = Math.floor(Math.min(containerWidth / size, containerHeight / size));
+    const squareSize = Math.min(container.offsetWidth / size, container.offsetHeight / size);
+    container.style.width = `${squareSize * size}px`;
+    container.style.height = `${squareSize * size}px`;
+    container.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
+    container.style.gridTemplateRows = `repeat(${size}, 1fr)`;
 
-    container.style.gridTemplateColumns = `repeat(${size}, ${squareSize}px)`;
-    container.style.gridTemplateRows = `repeat(${size}, ${squareSize}px)`;
-
-    for (let i = 0; i < totalDivs; i++) {
+    for (let i = 0; i < size * size; i++) {
         const square = document.createElement('div');
         square.classList.add('square');
-
         square.addEventListener('mouseover', () => {
             square.style.backgroundColor = 'black';
         });
-
         container.appendChild(square);
     }
 }
@@ -29,7 +24,7 @@ resizeButton.addEventListener('click', () => {
     if (newSize >= 1 && newSize <= 100) {
         createGrid(newSize);
     } else {
-        alert('1 i 100.');
+        alert('Enter a number between 1 and 100.');
     }
 });
 

@@ -2,37 +2,48 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    display: flex;
-    justify-content: center;
     align-items: center;
-    height: 100vh;
-    background-color: #f0f0f0;
-    flex-direction: row;
+}
+
+#head-line {
+    display: flex;
     justify-content: space-evenly;
+    gap: 590px;
 }
 
 .controls {
+    display: flex;
     margin-bottom: 20px;
+    justify-content: space-evenly;
+    justify-items: center;
+}
+
+#button-reset {
+    display: flex;
+    justify-self: center;
+    align-self: center;
 }
 
 #resizeButton {
     padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
+    height: 40px;
 }
 
 .container {
     display: grid;
-    grid-template-columns: repeat(10, 1fr);
-    grid-template-rows: repeat(10, 1fr);
     gap: 0;
     border: 3px solid black;
     width: 600px;
     height: 600px;
+    border-radius: 5px;
+    margin: 0;
+    padding: 0;
 }
 
 .square {
-    background-color: white;
+    background-color: hsl(40, 94%, 52%);
     border: 1px solid black;
     box-sizing: border-box;
     transition: background-color 0.3s;
